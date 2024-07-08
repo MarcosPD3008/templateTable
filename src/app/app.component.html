@@ -1,0 +1,38 @@
+<h1>No Template (Default) </h1>
+<app-table [headers]="headers"
+           [items]="items"
+           [actions]="actions">
+</app-table>
+
+
+<h1>With Template</h1>
+<app-table [headers]="headers"
+           [items]="items"
+           [actions]="actions"
+           [template]="template">
+    <ng-template #template let-item let-index="index">
+        <tr>
+            <td style="border: 1px solid red; text-align: center;">
+                {{ item.name  | uppercase }}
+            </td>
+            <td style="border: 1px solid red;"
+                [style.color]="ageColor(item.age)">
+                {{ item.age | number}}
+            </td>
+            <td style="border: 1px solid red;">
+                {{ item.city | titlecase }}
+            </td>
+            <td *ngIf="actions.length" 
+                class="actions">
+                <i class="trash" (click)="deleteItem(item)"></i>
+                <i class="pencil" (click)="editItem(item)"></i>
+            </td>
+        </tr>
+    </ng-template>
+</app-table>
+
+<h1>Loading</h1>
+<app-table [headers]="headers"
+           [actions]="actions"
+           [loading]="true">
+</app-table>

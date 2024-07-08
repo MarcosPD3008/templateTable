@@ -1,0 +1,15 @@
+.trash{
+    display: inline-block;
+    width: 16px !important; 
+    height: 16px !important;
+    background-size: contain;
+    background: url('/assets/icons/trash-can.svg') no-repeat center center;
+}
+
+.pencil{
+    display: inline-block;
+    width: 16px !important; 
+    height: 16px !important;
+    background-size: contain;
+    background: url('/assets/icons/pencil.svg') no-repeat center center;
+}

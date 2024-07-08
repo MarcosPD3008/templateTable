@@ -1,0 +1,48 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th *ngFor="let header of headers"
+          (click)="sortList(header.key)">
+        {{ header.label }}
+        <i class="arrow {{ sorter[header.key] == 'asc' ? 'up' : 'down' }}"
+           *ngIf="sorter[header.key]">
+        </i>
+      </th>
+      <th *ngIf="actions.length">Acciones</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr *ngIf="loading">
+      <td [colSpan]="headers.length + 1">
+        <i class="loading " aria-hidden="true"></i>
+      </td>
+    </tr>
+    
+    <tr *ngIf="!loading && !items.length">
+      <td [colSpan]="headers.length + 1">
+        <p class="text-center no-data">No hay datos para mostrar</p>
+      </td>
+    </tr>
+
+    <ng-container *ngFor="let item of items; let i = index">
+      <ng-container *ngTemplateOutlet="template ?? DefTemplate; context: {$implicit: item, index: i}"></ng-container>
+    </ng-container>
+  </tbody>
+</table>
+
+<ng-template #DefTemplate let-item let-index="index">
+  <tr>
+    <td *ngFor="let header of headers">
+      {{ item[header.key] }}
+    </td>
+    <td *ngIf="actions.length">
+      <select class="action-select" (change)="onActionChange($event, item)">
+        <option value="" selected disabled hidden>Seleccione una acción</option>
+        <option *ngFor="let action of actions" [value]="action._id">
+          {{ action.label }}
+        </option>
+      </select>
+    </td>
+  </tr>
+</ng-template>

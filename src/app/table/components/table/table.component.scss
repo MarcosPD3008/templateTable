@@ -1,0 +1,60 @@
+.table{
+    width: 100%;
+    border-collapse: collapse;
+    border: 1px solid #000;
+    table-layout: fixed;
+
+    thead{
+        tr{
+            th{
+                border: 1px solid #000;
+                padding: 10px;
+                background-color:burlywood;
+                color: white;
+            }
+        }
+    
+    }
+
+    tbody{
+        tr{
+            td{
+                border: 1px solid #000;
+                padding: 10px;
+                text-align: center;
+
+                select.action-select{
+                    padding: 5px;
+                    border: 1px solid #000;
+                    border-radius: 5px;
+                
+                }
+            }
+        }
+    }
+}
+
+
+.arrow{
+    display: inline-block;
+    width: 16px !important; 
+    height: 16px !important;
+    background-size: contain;
+
+    &.down{
+        background: url('/assets/icons/arrow-down.svg') no-repeat center center;
+    }
+
+    &.up{
+        background: url('/assets/icons/arrow-up.svg') no-repeat center center;
+    }
+}
+
+.loading {
+    display: inline-block;
+    width: 100px !important; 
+    height: 100px !important;
+    background-size: contain;
+    background: url('/assets/icons/loading.gif') no-repeat center center; /* Remove leading slash */
+}
+  
